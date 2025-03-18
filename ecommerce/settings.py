@@ -25,14 +25,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    # Django Apps
+    'rest_framework',
+    'drf_yasg',
     'clothes',
-
-    # Third-Party Apps
-    'rest_framework'
+    'producer',
 ]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

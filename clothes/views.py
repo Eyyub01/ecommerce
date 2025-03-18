@@ -8,6 +8,7 @@ from rest_framework import status
 
 from .models import Clothing
 from .serializers import ClothingSerializer
+from producer.models import Producer
 
 class ClothingListView(APIView):
     def get(self, request):
@@ -46,3 +47,10 @@ class ClothingDetailView(APIView):
         clothing = self.get_object(pk)
         clothing.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class ProducerClothingListView(APIView):
+    def get(self, request, producer_id):
+        producer = get_object_or_404(Producer, pk=producer_id)
+        clothes = Clothing.objects.filter(producer=producer)
+        serializer = ClothingSerializer(clothes, many=True)
+        return Response(serializer.data, status.HTTP_200_OK)
