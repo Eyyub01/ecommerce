@@ -1,6 +1,8 @@
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
+from django.core.mail import send_mail
+from django.conf import settings
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -9,6 +11,7 @@ from rest_framework import status
 from .models import Clothing
 from .serializers import ClothingSerializer
 from producer.models import Producer
+from .tasks import send_clothing_added_email  # Import the Celery task
 
 class ClothingListView(APIView):
     def get(self, request):
@@ -20,6 +23,7 @@ class ClothingListView(APIView):
         serializer = ClothingSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
+            send_clothing_added_email.delay(serializer.data['id']) 
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     

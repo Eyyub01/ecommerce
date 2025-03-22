@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     'drf_yasg',
     'clothes',
     'producer',
+    'celery',
+    'redis'
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -121,3 +123,18 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'abbaszadeeyyub@gmail.com'  
 EMAIL_HOST_PASSWORD = 'okmp bxim igtr dbjh'  
 
+# settings.py
+
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0' # Redis broker URL
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0' # Redis result backend URL.
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC' # Or your timezone.
+
+#configure django_celery_beat if installed.
+# CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+# Celery Configuration Options
+CELERY_TIMEZONE = "Asia/Baku"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
