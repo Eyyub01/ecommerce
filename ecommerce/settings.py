@@ -28,9 +28,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Django apps
     'clothes',
     'producer',
+    'utils',
 
+    # Third-party apps
     'rest_framework',
     'drf_yasg',
     'celery',
@@ -103,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Baku'
 
 USE_I18N = True
 
@@ -120,13 +123,22 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'  
-EMAIL_PORT = 587  
-EMAIL_USE_TLS = True  
-EMAIL_HOST_USER = 'abbaszadeeyyub@gmail.com'  
-EMAIL_HOST_PASSWORD = 'okmp bxim igtr dbjh'
+EMAIL_BACKEND = 'utils.email_backends.EmailBackends'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'abbaszadeeyyub@gmail.com'
+EMAIL_HOST_PASSWORD = 'buoh xnvv mksw ggcx'
+DEFAULT_FROM_EMAIL = "abbaszadeeyyub@gmail.com"
+EMAIL_PORT = 587
 
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0' 
 CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0' 
@@ -134,7 +146,7 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'UTC' 
-
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
 
 CELERY_TIMEZONE = "Asia/Baku"
 CELERY_TASK_TRACK_STARTED = True
@@ -142,6 +154,14 @@ CELERY_TASK_TIME_LIMIT = 30 * 60
 
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=5), 
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=30),   
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': False,
+    'UPDATE_LAST_LOGIN': False,
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,  
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
 }
