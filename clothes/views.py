@@ -7,13 +7,16 @@ from django.conf import settings
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Clothing
 from .serializers import ClothingSerializer
 from producer.models import Producer
-from .tasks import send_clothing_added_email  # Import the Celery task
+from .tasks import send_clothing_added_email  
 
 class ClothingListView(APIView):
+    permission_classes = [IsAuthenticated]
+    
     def get(self, request):
         clothes = Clothing.objects.all()
         serializer = ClothingSerializer(clothes, many=True)

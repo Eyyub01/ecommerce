@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "038ca9ad338d3157a0962307dd0f9051648986a934c84f5de142f396ef67c8a2"
+            "sha256": "89928a03a218e7214480e192bac1492d86529b6ffbaab6e8c1a20419715e1f6d"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -40,6 +40,15 @@
             "markers": "python_version >= '3.8'",
             "version": "==3.15.2"
         },
+        "djangorestframework-simplejwt": {
+            "hashes": [
+                "sha256:474a1b737067e6462b3609627a392d13a4da8a08b1f0574104ac6d7b1406f90e",
+                "sha256:4ef6b38af20cdde4a4a51d1fd8e063cbbabb7b45f149cc885d38d905c5a62edb"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.9'",
+            "version": "==5.5.0"
+        },
         "drf-yasg": {
             "hashes": [
                 "sha256:4d832e108dfe38e365101c36123576b498487d33bf27d57d6a37efb4cc773438",
@@ -65,12 +74,20 @@
             "markers": "python_version >= '3.8'",
             "version": "==24.2"
         },
+        "pyjwt": {
+            "hashes": [
+                "sha256:3b02fb0f44517787776cf48f2ae25d8e14f300e6d7545a4315cee571a415e850",
+                "sha256:7e1e5b56cc735432a7369cbfa0efe50fa113ebecdc04ae6922deba8b84582d0c"
+            ],
+            "markers": "python_version >= '3.8'",
+            "version": "==2.9.0"
+        },
         "pytz": {
             "hashes": [
-                "sha256:89dd22dca55b46eac6eda23b2d72721bf1bdfef212645d81513ef5d03038de57",
-                "sha256:c2db42be2a2518b28e65f9207c4d05e6ff547d1efa4086469ef855e4ab70178e"
+                "sha256:360b9e3dbb49a209c21ad61809c7fb453643e048b38924c765813546746e81c3",
+                "sha256:5ddf76296dd8c44c26eb8f4b6f35488f3ccbf6fbbd7adee0b7262d43f0ec2f00"
             ],
-            "version": "==2025.1"
+            "version": "==2025.2"
         },
         "pyyaml": {
             "hashes": [
@@ -138,14 +155,6 @@
             ],
             "markers": "python_version >= '3.8'",
             "version": "==0.5.3"
-        },
-        "tzdata": {
-            "hashes": [
-                "sha256:24894909e88cdb28bd1636c6887801df64cb485bd593f2fd83ef29075a81d694",
-                "sha256:7e127113816800496f027041c570f50bcd464a020098a3b6b199517772303639"
-            ],
-            "markers": "python_version >= '2'",
-            "version": "==2025.1"
         },
         "uritemplate": {
             "hashes": [

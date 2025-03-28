@@ -1,0 +1,73 @@
+# Python/Django specific
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Django specific
+*.log
+*.pot
+*.pyc
+migrations/
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+
+# Development
+.local/
+.idea/
+.vscode/
+*.sublime-workspace
+
+# Virtual environment
+venv/
+ENV/
+env/
+virtualenv/
+
+# Testing
+.cache
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+*.py,cover
+.pytest_cache/
+
+# Production
+collected_static/
+dist/
+*.egg
+*.egg-info/
+build/
+
+# SSL/TLS certificates and keys
+*.pem
+*.crt
+*.key
+*.cert
+*.csr
+ssl/
+
+# Email reminder specific
+email_logs/
+*.eml
+email_config.json
+email_secrets.ini
+secrets/
+*.secret
+
+# Other common files
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+*.tmp

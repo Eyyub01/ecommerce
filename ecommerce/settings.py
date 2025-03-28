@@ -1,4 +1,6 @@
+from datetime import timedelta
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,12 +27,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'drf_yasg',
+
     'clothes',
     'producer',
+
+    'rest_framework',
+    'drf_yasg',
     'celery',
-    'redis'
+    'redis',
+    'rest_framework_simplejwt',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -121,20 +126,22 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587  
 EMAIL_USE_TLS = True  
 EMAIL_HOST_USER = 'abbaszadeeyyub@gmail.com'  
-EMAIL_HOST_PASSWORD = 'okmp bxim igtr dbjh'  
+EMAIL_HOST_PASSWORD = 'okmp bxim igtr dbjh'
 
-# settings.py
-
-CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0' # Redis broker URL
-CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0' # Redis result backend URL.
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0' 
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0' 
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'UTC' # Or your timezone.
+CELERY_TIMEZONE = 'UTC' 
 
-#configure django_celery_beat if installed.
-# CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
-# Celery Configuration Options
+
 CELERY_TIMEZONE = "Asia/Baku"
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
+
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}
