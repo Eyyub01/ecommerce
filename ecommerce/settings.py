@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'celery',
-    'redis',
     'rest_framework_simplejwt',
 ]
 MIDDLEWARE = [
@@ -132,7 +131,7 @@ REST_FRAMEWORK = {
     ),
 }
 
-EMAIL_BACKEND = 'utils.email_backends.EmailBackends'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'abbaszadeeyyub@gmail.com'
@@ -140,18 +139,18 @@ EMAIL_HOST_PASSWORD = 'buoh xnvv mksw ggcx'
 DEFAULT_FROM_EMAIL = "abbaszadeeyyub@gmail.com"
 EMAIL_PORT = 587
 
-CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0' 
-CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0' 
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'UTC' 
 CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
 
+
 CELERY_TIMEZONE = "Asia/Baku"
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
-
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=5), 
